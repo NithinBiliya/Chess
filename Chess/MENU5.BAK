@@ -1,0 +1,61 @@
+//		2nd screen
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+#include<stdlib.h>
+#include<process.h>
+#include<fstream.h>
+#include<math.h>
+#include"G:\chess\mouses.cpp"
+#include"G:\chess\video.cpp"
+
+void main()
+{
+ int gdriver = DETECT, gmode;
+ initgraph(&gdriver, &gmode, "\\tc\\bgi");
+ cleardevice();
+ king("ch1");
+ int Mstatus = initmouse();
+ int button,m,n;
+ if(Mstatus == 0 )
+  outtextxy(50,50, "Mouse Support Not Available");
+ settextstyle(2,0,4);
+ while(1)
+{ showmouseptr();
+  getmousepos(&button,&m,&n);
+  if(m>245 && m<325 && n>220 && n<232)
+  { setcolor(RED);
+    outtextxy(250,220,"PLAYER vs PLAYER"); }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,220,"PLAYER vs PLAYER");
+  if(m>245 && m<325 && n>240 && n<252)
+  { setcolor(RED);
+    outtextxy(250,240,"CHESS PUZZLES");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,240,"CHESS PUZZLES");
+  if(m>245 && m<325 && n>260 && n<272)
+  { setcolor(RED);
+    outtextxy(250,260,"BACK");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,260,"BACK"); }}}
+  if(button == 1)
+  { if(m>245 && m<325 && n>220 && n<232)
+    { hidemouseptr();
+      video(450,150);
+      spawnl(P_WAIT,"g:\\exe\\load.exe", NULL);  // load
+      spawnl(P_WAIT,"g:\\exe\\chess.exe", NULL);  // player vs player
+      exit(0); }
+    if(m>245 && m<325 && n>240 && n<252)
+    { hidemouseptr();
+      video(450,150);
+      spawnl(P_WAIT,"g:\\exe\\menu6.exe", NULL);  // chess puzzles menu
+      exit(0); }
+    if(m>245 && m<325 && n>260 && n<272)
+    { hidemouseptr();
+      video(450,150);
+//      spawnl(P_WAIT,"g:\\exe\\menu1.exe", NULL);  // back to main menu
+      break; }}}}

@@ -1,0 +1,106 @@
+//		Main Menu
+
+#include<stdio.h>
+#include<fstream.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+#include<stdlib.h>
+#include<process.h>
+#include<math.h>
+#include"G:\chess\mouses.cpp"
+#include"G:\chess\1stpg.cpp"
+#include"G:\chess\video.cpp"
+
+void main()
+{
+ int gdriver = DETECT, gmode;
+ initgraph(&gdriver, &gmode, "\\tc\\bgi");
+ cleardevice();
+ int Mstatus = initmouse();
+ int button,m,n;
+ int z=0;
+ if(Mstatus == 0 )
+  outtextxy(50,50, "Mouse Support Not Available");
+ settextstyle(2,0,4);
+ king("CH1");
+ video(450,150);
+ while(1)
+{ showmouseptr();
+  getmousepos(&button,&m,&n);
+  if(m>245 && m<325 && n>200 && n<212 && z!=0)
+  { setcolor(RED);
+    outtextxy(250,200,"RESUME GAME"); }
+  else
+  { if(z==0)
+     setcolor(DARKGRAY);
+    else
+     setcolor(WHITE);
+    outtextxy(250,200,"RESUME GAME");
+  if(m>245 && m<325 && n>220 && n<232)
+  { setcolor(RED);
+    outtextxy(250,220,"NEW GAME"); }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,220,"NEW GAME");
+  if(m>245 && m<325 && n>240 && n<252)
+  { setcolor(RED);
+    outtextxy(250,240,"HELP");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,240,"HELP");
+  if(m>245 && m<325 && n>260 && n<272)
+  { setcolor(RED);
+    outtextxy(250,260,"SAVE");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,260,"SAVE");
+  if(m>245 && m<325 && n>280 && n<292)
+  { setcolor(RED);
+    outtextxy(250,280,"LOAD");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,280,"LOAD"); }
+  if(m>245 && m<325 && n>300 && n<312)
+  { setcolor(RED);
+    outtextxy(250,300,"CREDITS");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,300,"CREDITS"); }
+  if(m>245 && m<325 && n>320 && n<332)
+  { setcolor(RED);
+    outtextxy(250,320,"QUIT");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,320,"QUIT"); }}}}}
+  if(button == 1)
+  { if(m>245 && m<325 && n>220 && n<232)
+    { hidemouseptr();
+      video(450,150);
+      spawnl(P_WAIT,"g:\\exe\\menu5.exe", NULL); }   // 2nd main menu
+//      exit(0);  }
+    if(m>245 && m<325 && n>240 && n<252)
+    { hidemouseptr();
+      video(450,150);
+      spawnl(P_WAIT,"g:\\exe\\menu2.exe", NULL); }   // help
+//      exit(0);  }
+    if(m>245 && m<325 && n>260 && n<272)
+    { hidemouseptr();
+      video(450,150);
+      spawnl(P_WAIT,"g:\\exe\\menu4.exe", NULL); }  // save
+//      exit(0);  }
+    if(m>245 && m<325 && n>280 && n<292)
+    { hidemouseptr();
+      video(450,150);
+//      spawnl(P_WAIT,"g:\\exe\\menu4.exe", NULL);  // loading saved game
+      exit(0);  }
+    if(m>245 && m<325 && n>300 && n<312)
+    { hidemouseptr();
+      video(450,150);
+//      spawnl(P_WAIT,"g:\\exe\\menu4.exe", NULL);  // credits
+      exit(0);  }
+    if(m>245 && m<325 && n>320 && n<332)
+    { hidemouseptr();
+      video(450,150);
+      exit(0); }}}                              // exit
+}

@@ -1,0 +1,84 @@
+//		CHESS - NEW VERSION
+
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+#include<process.h>
+#include<fstream.h>
+#include"H:\chess\mouses.cpp"
+#include"H:\chess\function.cpp"
+
+void main()
+{
+ int gdriver = DETECT, gmode;
+ initgraph(&gdriver, &gmode, "\\tc\\bgi");
+ cleardevice();
+ setlinestyle(SOLID_LINE,0,THICK_WIDTH);
+ board();
+// setvalues();
+ open();
+ coins();
+ int i=7,j=0;
+ char s='10';
+ setcolor(RED);
+ rectangle(A[i][j].x,A[i][j].y,A[i][j].x+43,A[i][j].y+43);
+ while(1)
+ { if(sign>0)
+    c=black;
+   else
+    c=white;
+  occ();
+  if(checkcheck==yes)
+   check();
+  checkcheck=yes;
+  s=getch();
+  if(help==yes)
+   redraw();
+  setcolor(WHITE);
+  rectangle(A[i][j].x,A[i][j].y,A[i][j].x+43,A[i][j].y+43);
+  getpos(i,j,s);
+  if(help==yes)
+   boxes(i,j);
+  setcolor(RED);
+  rectangle(A[i][j].x,A[i][j].y,A[i][j].x+43,A[i][j].y+43);
+  if(s=='p'||s=='P'||s=='l'||s=='L');else
+  { setfillstyle(SOLID_FILL,WHITE);
+    bar(0,getmaxy()-15,getmaxx(),getmaxy()); }
+  if(s=='5')
+  { stop=0;
+    if(A[i][j].color==null)
+    { settextstyle(2,0,4);
+      outtextxy(10,getmaxy()-15,"Select a coin to make a move !!");  }
+    else if(A[i][j].color==white && c==black)
+    { settextstyle(2,0,4);
+      outtextxy(10,getmaxy()-15,"It is black chance to play !!");  }
+    else if(A[i][j].color==black && c==white)
+    { settextstyle(2,0,4);
+      outtextxy(10,getmaxy()-15,"It is white chance to play !!");  }
+    else if(A[i][j].coin=='P' && A[i][j].color==c)
+     PAWN(i,j);
+    else if(A[i][j].coin=='R' && A[i][j].color==c)
+     ROOK(i,j);
+    else if(A[i][j].coin=='H' && A[i][j].color==c)
+     KNIGHT(i,j);
+    else if(A[i][j].coin=='B' && A[i][j].color==c)
+     BISHOP(i,j);
+    else if(A[i][j].coin=='Q' && A[i][j].color==c)
+     QUEEN(i,j);
+    else if(A[i][j].coin=='K' && A[i][j].color==c)
+     KING(i,j);
+    if(A[0][0].coin=='N')
+     moveR1B=yes;
+    if(A[0][7].coin=='N')
+     moveR2B=yes;
+    if(A[7][0].coin=='N')
+     moveR1W=yes;
+    if(A[7][7].coin=='N')
+     moveR2W=yes;
+    if(A[0][3].coin=='N')
+     moveBK=yes;
+    if(A[7][3].coin=='N')
+     moveWK=yes;
+    setcolor(RED);
+    rectangle(A[i][j].x,A[i][j].y,A[i][j].x+43,A[i][j].y+43);   }}}

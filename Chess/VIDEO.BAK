@@ -1,0 +1,117 @@
+//		VIDEO FUNCTIONS
+
+void video(int x1,int y1,int p)
+{ setcolor(WHITE);
+  x1=x1-75; y1=y1+65;
+  line(x1,y1,x1,y1+35);
+  line(x1,y1,x1,y1+35);
+  x1=x1+75; y1=y1-65;
+  x1=x1-75; y1=y1+65;
+  float a=92,d=30,b=a;
+  float x2,y2,x5,y5,x10,y10;
+  float x3,y3,x4,y4,x9,y9,x11,y11;
+  float x6,y6,x7,y7,x8,y8;
+  if(p==1)
+  { a=90-0.01;  b=90; }
+  while(a>=90)
+  { x2=x1+d*cos(a);
+    y2=y1+d*sin(a);
+    x3=x1+d*cos(a);
+    y3=y1+35+(d*sin(a));
+    x4=x1+(d+3)*cos(a);
+    y4=y1+35+((d+3)*sin(a));
+    x5=x1+(d+3)*cos(a);
+    y5=y1+(d+3)*sin(a);
+    x6=x1+(d+3)*cos(a);
+    y6=(y1+18)+(d+3)*sin(a);
+    x7=x1+(d+150)*cos(a);
+    y7=(y1+18)+(d+150)*sin(a);
+    x8=x1+(d+150)*cos(a);
+    y8=(y1+10)+(d+150)*sin(a);
+    x9=x1+(d+3)*cos(a);
+    y9=(y1+10)+(d+3)*sin(a);
+    x10=x1+(d+6)*cos(a);
+    y10=(y1+15)+(d+10)*sin(a);
+    x11=x1+(d-5)*cos(a);
+    y11=(y1+15)+(d-5)*sin(a);
+    setcolor(WHITE);
+    line(x1,y1,x2,y2);
+    line(x1,y1+35,x3,y3);
+    line(x2,y2,x3,y3);
+    line(x4,y4,x5,y5);
+    line(x6,y6,x7,y7);
+    line(x8,y8,x9,y9);
+    line(x8,y8,x7,y7);
+    delay(10);
+    setcolor(BLACK);
+    line(x1,y1,x2,y2);
+    line(x1,y1+35,x3,y3);
+    line(x2,y2,x3,y3);
+    line(x4,y4,x5,y5);
+    line(x6,y6,x7,y7);
+    line(x8,y8,x9,y9);
+    line(x8,y8,x7,y7);
+    a-=0.01; }
+  setfillstyle(SOLID_FILL,BLACK);
+  bar(180,73,370,365);
+  while(a<=b)
+  { x2=x1+d*cos(a);
+    y2=y1+d*sin(a);
+    x3=x1+d*cos(a);
+    y3=y1+35+(d*sin(a));
+    x4=x1+(d+3)*cos(a);
+    y4=y1+35+((d+3)*sin(a));
+    x5=x1+(d+3)*cos(a);
+    y5=y1+(d+3)*sin(a);
+    x6=x1+(d+3)*cos(a);
+    y6=(y1+18)+(d+3)*sin(a);
+    x7=x1+(d+150)*cos(a);
+    y7=(y1+18)+(d+150)*sin(a);
+    x8=x1+(d+150)*cos(a);
+    y8=(y1+10)+(d+150)*sin(a);
+    x9=x1+(d+3)*cos(a);
+    y9=(y1+10)+(d+3)*sin(a);
+    x10=x1+(d+6)*cos(a);
+    y10=(y1+15)+(d+10)*sin(a);
+    x11=x1+(d-5)*cos(a);
+    y11=(y1+15)+(d-5)*sin(a);
+    setcolor(WHITE);
+    line(x1,y1,x2,y2);
+    line(x1,y1+35,x3,y3);
+    line(x1,y1,x2,y2);
+    line(x1,y1+35,x3,y3);
+    line(x2,y2,x3,y3);
+    line(x4,y4,x5,y5);
+    line(x6,y6,x7,y7);
+    line(x8,y8,x9,y9);
+    line(x8,y8,x7,y7);
+    delay(10);
+    if(a!=b) {
+    setcolor(BLACK);
+    line(x1,y1,x2,y2);
+    line(x1,y1+35,x3,y3);
+    line(x1,y1,x2,y2);
+    line(x1,y1+35,x3,y3);
+    line(x2,y2,x3,y3);
+    line(x4,y4,x5,y5);
+    line(x6,y6,x7,y7);
+    line(x8,y8,x9,y9);
+    line(x8,y8,x7,y7); }
+    a+=0.01;  }
+}
+
+void king(char name[30])                //  for king
+{     fstream file;
+      file.open(name,ios::binary|ios::in);
+      if(!file)
+      { outtextxy(250,150,"Unable to open");
+	getch();
+	exit(0); }
+      unsigned color;
+      file.read((char*)&color,sizeof(color));
+      for(int i=0;i<getmaxx();i++)
+       for(int j=0;j<getmaxy();j++)
+       { putpixel(i,j,color);
+	 file.read((char*)&color,sizeof(color)); }
+      putpixel(i,j,color);
+      file.close();  }

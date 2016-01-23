@@ -1,0 +1,67 @@
+Initial Position : 
+   First row : rook, knight, bishop, king, queen, bishop, knight, rook
+   Second row : pawns *
+Chess is played on a square board of 8 rows and 8 columns of squares. 
+The colors of 64 squares alternate and are refered as " light square "
+and " dark square ". Chess board is placed with a light square at the 
+right hand end of the side nearest to each player, and the pieces are
+set out as shown in the diagram with each king on its own color.
+ *    The pieces are divided into white and black sets. Each player begins
+the game with 16 pieces of specified color. These consist of 1 king,
+1 queen, 2 rooks, 2 bishops, 2 knights, and 8 pawns. White moves first.
+Pieces are moved in unoccupied squares or squares uoccupied by the
+opponent ( exception en passant ). The players alternate moving one
+piece at a time ( exception castling ).*
+Check : It is a condition when a player's king is under the attack of
+the opponents pieces.
+
+Check mate : It is the condition when a player's king is in check and
+he cannot move any piece to take his king out of check. The player
+giving check mate is ultimately the winner !
+*KING : King can move only 1 step at a time but in all the 8 directions.
+King can also cassle. Condition for castling :
+1. King should not be in check.
+2. King and rook should not be moved before in the game.
+3. King should not move over the squares in check.
+4. The squares between the king and the rook should be unoccupied.
+
+Castling move : King can move 2 squares to the left and the left rook 
+2 steps to the right. OR King can move 3 steps to the right and the
+right rook can move 2 steps to the left.
+*ROOK : Rook can move in 4 directions - up, down, right, left. It can 
+move any number of steps until it reaches the end of the board or encounters
+any other coin.
+*
+BISHOP : Bishop can also move in 4 directions - top right, top left,
+bottom right, bottom left. It can move any number of steps until it reaches
+the end of the board or encounters any other coin.
+*
+QUEEN : Queen can move any number of steps until it reaches the end of
+the board or encounters any other coin in any of the 8 directions.
+*
+KNIGHT : Knight moves in a very special way. It moves in the shape of
+'L'. The longer side is of 2 squares and the shorter is of 1 square.
+Knight can also jump over other coins.
+*
+PAWN : Pawn can move only in one direction. ie) only in forward direction.
+In the first move it can move 2 steps or 1 step forward. But after that it
+can move only 1 step forward untill it encounters another coin.
+
+It has got 2 special moves :
+
+En Passant : It is the move by which the pawn can attack the opponent's 
+coin if the opponents coin is to the forward right or forward left position.
+
+Promotion : If the pawn moves to the other end of the board, then it will 
+get a chance to promote or exchange the pawn to any other coin other than 
+the king.
+
+A pawn can never move backwards on the board.*
+           End Of Game :
+
+Chess games do not have to end in checkmate- either player may resign if
+the situation looks hopeless. Games also may end in a draw (tie). A draw
+can occur in several situations : draw by agreement, stalemate, threefold
+repetetion of a position, the fifty move rule, or a draw by impossibility
+of checkmate (because of insufficient material to checkmate).
+*

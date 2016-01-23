@@ -1,0 +1,116 @@
+//	inside chess puzzles
+
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+#include<stdlib.h>
+#include<process.h>
+#include<fstream.h>
+#include<math.h>
+#include<string.h>
+#include"G:\chess\mouses.cpp"
+#include"G:\chess\video.cpp"
+
+class GAME
+{ unsigned level;
+  unsigned lives;
+  public :
+  friend jumptolev(char[20]); };
+
+void main()
+{
+ int gdriver = DETECT, gmode;
+ initgraph(&gdriver, &gmode, "\\tc\\bgi");
+ cleardevice();
+ king("ch1");
+ int Mstatus = initmouse();
+ int button,m,n;
+ if(Mstatus == 0 )
+  outtextxy(50,50, "Mouse Support Not Available");
+ settextstyle(2,0,4);
+ while(1)
+{ showmouseptr();
+  getmousepos(&button,&m,&n);
+  if(m>245 && m<325 && n>220 && n<232)
+  { setcolor(RED);
+    outtextxy(250,220,"START"); }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,220,"START");
+  if(m>245 && m<325 && n>240 && n<252)
+  { setcolor(RED);
+    outtextxy(250,240,"CHEAT");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,240,"CHEAT");
+  if(m>245 && m<325 && n>260 && n<272)
+  { setcolor(RED);
+    outtextxy(250,260,"BACK");  }
+  else
+  { setcolor(WHITE);
+    outtextxy(250,260,"BACK"); }}}
+  if(button == 1)
+  { if(m>245 && m<325 && n>220 && n<232)
+    { hidemouseptr();
+      video(450,150);
+      int t=0;
+      fstream file;
+      file.open("puzzle.dat",ios::binary|ios::in);
+      if(!file)
+       cout<<"Couldnt open the file";
+      file.write((char*)&t,sizeof(t));
+      file.close();
+      spawnl(P_WAIT,"g:\\exe\\load.exe", NULL);  // load
+      spawnl(P_WAIT,"g:\\exe\\puzzle.exe", NULL);  // Start the puzzles
+      exit(0); }
+    if(m>245 && m<325 && n>240 && n<252)
+    { hidemouseptr();
+      video(450,150);
+      char text[20];
+      for(int k=0;k<20;k++)
+      { text[k]=getch();
+	if(text[k]=='\r')
+	{ text[k]='\0';
+	  break; }
+	text[k+1]='\0';
+	outtextxy(250,200,text); }
+      jumptolev(text); }
+    if(m>245 && m<325 && n>260 && n<272)
+    { hidemouseptr();
+      video(450,150);
+  //    spawnl(P_WAIT,"g:\\exe\\menu1.exe", NULL);  // back to sec. main menu
+      break; }}}
+}
+
+int jumptolev(char cheat[20])
+{ GAME temp;
+  int t=1;
+  if(!strcmp(cheat,"lev1"))
+  { temp.level=1;
+    temp.lives=3; }
+  else if(!strcmp(cheat,"lev2"))
+  { temp.level=2;
+    temp.lives=3; }
+  else if(!strcmp(cheat,"lev3"))
+  { temp.level=3;
+    temp.lives=3; }
+  else if(!strcmp(cheat,"lev4"))
+  { temp.level=4;
+    temp.lives=3; }
+  else if(!strcmp(cheat,"lev5"))
+  { temp.level=5;
+    temp.lives=3; }
+  else if(!strcmp(cheat,"lev6"))
+  { temp.level=6;
+    temp.lives=3; }
+  else return 0;
+  fstream file;
+  file.open("puzzle.txt",ios::binary|ios::in|ios::out);
+  if(!file)
+   cout<<"Couldnt open the file";
+  file.write((char*)&t,sizeof(t));
+  file.write((char*)&temp,sizeof(temp));
+  file.close();
+  spawnl(P_WAIT,"g:\\exe\\load.exe", NULL);
+  spawnl(P_WAIT,"g:\\exe\\puzzle.exe", NULL); }
